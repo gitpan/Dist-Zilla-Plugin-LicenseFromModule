@@ -1,0 +1,15 @@
+Build.PL
+Changes
+LICENSE
+MANIFEST
+META.json
+META.yml
+README
+cpanfile
+dist.ini
+lib/Dist/Zilla/Plugin/LicenseFromModule.pm
+t/00-compile.t
+t/dist/MIT/lib/DZT/Sample.pm
+t/dist/Perl5/lib/DZT/Sample.pm
+t/license.t
+t/release-pod-syntax.t
