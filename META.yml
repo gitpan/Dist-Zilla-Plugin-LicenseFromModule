@@ -6,12 +6,20 @@ build_requires: {}
 configure_requires:
   Module::Build::Tiny: 0.013
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300031, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Dist::Milla version v0.9.6, Dist::Zilla version 4.300032, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
 name: Dist-Zilla-Plugin-LicenseFromModule
+no_index:
+  directory:
+    - t
+    - xt
+    - inc
+    - share
+    - eg
+    - examples
 requires:
   Dist::Zilla: 4.3
   Software::License: 0
@@ -20,4 +28,4 @@ resources:
   bugtracker: https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule/issues
   homepage: https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule
   repository: https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule.git
-version: 0.01
+version: 0.02
