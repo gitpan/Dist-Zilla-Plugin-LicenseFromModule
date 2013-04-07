@@ -4,9 +4,9 @@ author:
   - 'Tatsuhiko Miyagawa <miyagawa@bulknews.net>'
 build_requires: {}
 configure_requires:
-  Module::Build::Tiny: 0.013
+  Module::Build::Tiny: 0.014
 dynamic_config: 0
-generated_by: 'Dist::Milla version v0.9.6, Dist::Zilla version 4.300032, CPAN::Meta::Converter version 2.130880'
+generated_by: 'Dist::Milla version v1.0.0, Dist::Zilla version 4.300033, CPAN::Meta::Converter version 2.130880'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -21,11 +21,11 @@ no_index:
     - eg
     - examples
 requires:
-  Dist::Zilla: 4.3
+  Dist::Zilla: 4.30003
   Software::License: 0
   perl: 5.008005
 resources:
   bugtracker: https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule/issues
   homepage: https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule
   repository: https://github.com/miyagawa/Dist-Zilla-Plugin-LicenseFromModule.git
-version: 0.02
+version: 0.03
