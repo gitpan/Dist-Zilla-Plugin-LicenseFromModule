@@ -1,11 +1,33 @@
 package Dist::Zilla::Plugin::LicenseFromModule;
 use strict;
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 use Moose;
 with 'Dist::Zilla::Role::LicenseProvider';
 
 has 'override_author', is => 'rw', isa => 'Bool', default => 0;
+
+has source_file => (
+    is => 'ro',
+    lazy => 1,
+    isa => 'Str',
+    builder => '_default_source_file',
+);
+
+sub _default_source_file {
+    my $self = shift;
+    my $pm = $self->zilla->main_module->name;
+    (my $pod = $pm) =~  s/\.pm$/\.pod/;
+    return -e $pod ? $pod : $pm;
+}
+
+sub _file_from_filename {
+    my ($self, $filename) = @_;
+    for my $file (@{$self->zilla->files}) {
+        return $file if $file->name eq $filename;
+    }
+    die 'no file module $filename in dist';
+}
 
 use Software::LicenseUtils;
 use Module::Load ();
@@ -24,7 +46,7 @@ sub should_override_author {
 sub provide_license {
     my($self, $args) = @_;
 
-    my $content = $self->zilla->main_module->content;
+    my $content = $self->_file_from_filename($self->source_file)->content;
 
     my $author = $self->author_from($content);
     my $year = $self->copyright_year_from($content);
@@ -43,7 +65,7 @@ sub provide_license {
     my $license_class = $guess[0];
 
     $self->log(["guessing from %s, License is %s\nCopyright %s %s",
-                $self->zilla->main_module->name, $license_class,
+                $self->source_file, $license_class,
                 $year || '(unknown)', $author || '(unknown)']);
 
     Module::Load::load($license_class);
